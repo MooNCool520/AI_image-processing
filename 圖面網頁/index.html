@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改前後對比圖片</title>
+    <style>
+        .image-group {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .image {
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+
+</head>
+<body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="image-group">
+            <div class="image">
+                <img src="img/修復前.jpg" alt="修復前照片">
+                <p>修復前</p>
+            </div>
+            <div class="image">
+                <img src="img/修復後.jpg" alt="修復後照片">
+                <p>修復後</p>
+            </div>
+        </div>
+
+        <div class="image-group">
+            <div class="image">
+                <img src="img/延伸前.jpg" alt="延伸前照片">
+                <p>延伸前</p>
+            </div>
+            <div class="image">
+                <img src="img/延伸後.jpeg" alt="延伸後照片">
+                <p>延伸後</p>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function previewImage(input, previewId) {
+            var preview = document.getElementById(previewId);
+            var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>
